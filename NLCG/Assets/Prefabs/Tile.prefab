@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7399606323699443356}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Nen dat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5509495980984040493, guid: 03adf85143289d04f8190501f29aae6f,
+  m_Sprite: {fileID: 6837797380565995554, guid: 03adf85143289d04f8190501f29aae6f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

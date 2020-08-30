@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -9,15 +10,49 @@ public class Movement : MonoBehaviour
     private Vector2 move;
     private Vector2 face;
 
+    public List<Sprite> sprites;
+
+    public GameObject odat, carot;
+    public GameObject chon;
     public float speed;
-    // Start is called before the first frame update
+    private float TimeStart = 10f;
+    private string str;
+
+    public Text timeTree;
+
+    private List<GameObject> listOdat = new List<GameObject>();
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if(TimeStart >= 0f)
+        {
+            TimeStart -= Time.deltaTime;
+        }
+        TimeSpan time = TimeSpan.FromSeconds(TimeStart);
+        str = time.ToString(@"hh\:mm\:ss"); 
+        timeTree.text = str;
+        if(TimeStart <= 5f && TimeStart >= 0f)
+        {
+            for (int i = 0; i < listOdat.Count; i++)
+            {
+                listOdat[i].GetComponent<SpriteRenderer>().sprite = sprites[1];
+            }
+        }
+        if(TimeStart <= 0f)
+        {
+            for (int i = 0; i < listOdat.Count; i++)
+            {
+                listOdat[i].GetComponent<SpriteRenderer>().sprite = sprites[2];
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         move.x = Input.GetAxisRaw("Horizontal");
@@ -37,5 +72,25 @@ public class Movement : MonoBehaviour
         anim.SetFloat("FaceY", face.y);
 
         rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+        Chon();
     }
+
+    private void Chon()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        chon.SetActive(true);
+        chon.transform.position = hit.transform.position;
+        if (Input.GetKeyDown(KeyCode.Space) && hit.collider.gameObject.CompareTag("Nen dat"))
+        {
+            Instantiate(odat, chon.transform.position, Quaternion.identity);
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && hit.collider.gameObject.CompareTag("Odat"))
+        {
+            GameObject cr = Instantiate(carot, chon.transform.position, Quaternion.identity);
+            cr.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            listOdat.Add(cr);
+        }
+    }
+
+
 }

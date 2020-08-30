@@ -15,10 +15,6 @@ public class CreatePlan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject odat = Instantiate(plan, gameObject.transform.position, Quaternion.identity) as GameObject;
-            odat.transform.SetParent(listdat.transform);
-        }
+        
     }
 }

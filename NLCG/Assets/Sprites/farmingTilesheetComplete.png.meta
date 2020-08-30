@@ -355,7 +355,7 @@ TextureImporter:
     second: farmingTilesheetComplete_114
   - first:
       213: 6348775854790515859
-    second: farmingTilesheetComplete_115
+    second: giua
   - first:
       213: 4261682983329686121
     second: farmingTilesheetComplete_116
@@ -451,7 +451,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -2913,7 +2913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: farmingTilesheetComplete_115
+      name: giua
       rect:
         serializedVersion: 2
         x: 16

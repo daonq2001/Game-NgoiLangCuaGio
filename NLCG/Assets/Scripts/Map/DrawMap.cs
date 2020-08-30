@@ -22,23 +22,20 @@ public class DrawMap : MonoBehaviour
     {
         tiles = new GameObject[xSize, ySize];     
 
-        float startX = transform.position.x;     
-        float startY = transform.position.y;
-
         for (int x = 0; x < xSize; x++)
-        {      
+        {
             for (int y = 0; y < ySize; y++)
             {
-                if(y == 0 || x == 0 || y == xSize - 1 || x == ySize - 1)
-                {
-                    tile.GetComponent<SpriteRenderer>().sprite = sprites[0];
-                }
-                else
+                if((x % 2 == 0 && y % 2 != 0) || (y % 2 ==0 && x % 2 != 0))
                 {
                     tile.GetComponent<SpriteRenderer>().sprite = sprites[1];
                 }
-                GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
-                
+                else
+                {
+                    tile.GetComponent<SpriteRenderer>().sprite = sprites[0];
+                }
+                GameObject newTile = Instantiate(tile, new Vector3(x, y, 0), tile.transform.rotation);
+                tiles[x, y] = newTile;
             }
         }
     }
